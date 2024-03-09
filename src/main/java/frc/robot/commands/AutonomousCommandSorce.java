@@ -23,9 +23,10 @@ public class AutonomousCommandSorce extends SequentialCommandGroup {
 
         addCommands(new ParallelRaceGroup(new LauncherCommand(launcherSubsystem, LauncherConstants.launcherUP), new WaitCommand(3)));
         addCommands(new ParallelRaceGroup(new CollectorCommand(collectorSubsystem, Constants.CollectorConstants.collectorSpeed), new LauncherCommand(launcherSubsystem, LauncherConstants.launcherUP), new WaitCommand(2)));
-        //addCommands(new AutonomousMove(tracaoSubsystem, -Constants.AutonomousConstants.tracaoSpeed, 0), new WaitCommand(0.7));
-        addCommands(new ParallelRaceGroup(new AutonomousMove(tracaoSubsystem, 0, 0.7), new WaitCommand(2.5)));
-        //addCommands(new ParallelRaceGroup(new AutonomousMove(tracaoSubsystem, -Constants.AutonomousConstants.tracaoSpeed, 0), new WaitCommand(2)));
-        
+        addCommands(new ParallelRaceGroup(new AutonomousMove(tracaoSubsystem, 0, 0.7), new WaitCommand(2.25)));
+        addCommands(new ParallelRaceGroup(new AutonomousMove(tracaoSubsystem, 0.7, 0), new WaitCommand(0.7)));
+        addCommands(new ParallelRaceGroup(new AutonomousMove(tracaoSubsystem, 0, 0.7), new CollectorCommand(collectorSubsystem, Constants.CollectorConstants.collectorSpeed), new WaitCommand(1.2)));
+        addCommands(new ParallelRaceGroup(new LauncherCommand(launcherSubsystem, LauncherConstants.launcherUP), new WaitCommand(3)));
+        addCommands(new ParallelRaceGroup(new CollectorCommand(collectorSubsystem, Constants.CollectorConstants.collectorSpeed), new LauncherCommand(launcherSubsystem, LauncherConstants.launcherUP), new WaitCommand(2)));
     }
 }
